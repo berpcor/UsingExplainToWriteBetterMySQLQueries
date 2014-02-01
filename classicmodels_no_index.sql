@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
   `customerNumber` int(11) NOT NULL,
@@ -13,8 +12,7 @@ CREATE TABLE `customers` (
   `postalCode` varchar(15) DEFAULT NULL,
   `country` varchar(50) NOT NULL,
   `salesRepEmployeeNumber` int(11) DEFAULT NULL,
-  `creditLimit` double DEFAULT NULL,
-  PRIMARY KEY (`customerNumber`)
+  `creditLimit` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `customers` (`customerNumber`, `customerName`, `contactLastName`, `contactFirstName`, `phone`, `addressLine1`, `addressLine2`, `city`, `state`, `postalCode`, `country`, `salesRepEmployeeNumber`, `creditLimit`) VALUES
@@ -150,8 +148,7 @@ CREATE TABLE `employees` (
   `email` varchar(100) NOT NULL,
   `officeCode` varchar(10) NOT NULL,
   `reportsTo` int(11) DEFAULT NULL,
-  `jobTitle` varchar(50) NOT NULL,
-  PRIMARY KEY (`employeeNumber`)
+  `jobTitle` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `employees` (`employeeNumber`, `lastName`, `firstName`, `extension`, `email`, `officeCode`, `reportsTo`, `jobTitle`) VALUES
@@ -189,8 +186,7 @@ CREATE TABLE `offices` (
   `state` varchar(50) DEFAULT NULL,
   `country` varchar(50) NOT NULL,
   `postalCode` varchar(15) NOT NULL,
-  `territory` varchar(10) NOT NULL,
-  PRIMARY KEY (`officeCode`)
+  `territory` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `offices` (`officeCode`, `city`, `phone`, `addressLine1`, `addressLine2`, `state`, `country`, `postalCode`, `territory`) VALUES
@@ -208,8 +204,7 @@ CREATE TABLE `orderdetails` (
   `productCode` varchar(15) NOT NULL,
   `quantityOrdered` int(11) NOT NULL,
   `priceEach` double NOT NULL,
-  `orderLineNumber` smallint(6) NOT NULL,
-  PRIMARY KEY (`orderNumber`,`productCode`)
+  `orderLineNumber` smallint(6) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `orderdetails` (`orderNumber`, `productCode`, `quantityOrdered`, `priceEach`, `orderLineNumber`) VALUES
@@ -3218,9 +3213,7 @@ CREATE TABLE `orders` (
   `shippedDate` datetime DEFAULT NULL,
   `status` varchar(15) NOT NULL,
   `comments` text,
-  `customerNumber` int(11) NOT NULL,
-  PRIMARY KEY (`orderNumber`),
-  KEY `customerNumber` (`customerNumber`)
+  `customerNumber` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `orders` (`orderNumber`, `orderDate`, `requiredDate`, `shippedDate`, `status`, `comments`, `customerNumber`) VALUES
@@ -3556,8 +3549,7 @@ CREATE TABLE `payments` (
   `customerNumber` int(11) NOT NULL,
   `checkNumber` varchar(50) NOT NULL,
   `paymentDate` datetime NOT NULL,
-  `amount` double NOT NULL,
-  PRIMARY KEY (`customerNumber`,`checkNumber`)
+  `amount` double NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `payments` (`customerNumber`, `checkNumber`, `paymentDate`, `amount`) VALUES
@@ -3841,8 +3833,7 @@ CREATE TABLE `productlines` (
   `textDescription` varchar(4000) DEFAULT NULL,
   `htmlDescription` mediumtext,
   `image` mediumblob,
-  `status` enum('Active','Inactive') DEFAULT NULL,
-  PRIMARY KEY (`productLine`)
+  `status` enum('Active','Inactive') DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `productlines` (`productLine`, `textDescription`, `htmlDescription`, `image`, `status`) VALUES
@@ -3865,8 +3856,7 @@ CREATE TABLE `products` (
   `quantityInStock` smallint(6) NOT NULL,
   `buyPrice` double NOT NULL,
   `MSRP` double NOT NULL,
-  `status` enum('Active','Inactive') DEFAULT NULL,
-  PRIMARY KEY (`productCode`)
+  `status` enum('Active','Inactive') DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `products` (`productCode`, `productName`, `productLine`, `productScale`, `productVendor`, `productDescription`, `quantityInStock`, `buyPrice`, `MSRP`, `status`) VALUES
@@ -3986,8 +3976,7 @@ CREATE TABLE `productvariants` (
   `variantId` int(11) NOT NULL AUTO_INCREMENT,
   `productCode` varchar(15) DEFAULT NULL,
   `variantName` varchar(100) DEFAULT NULL,
-  `buyPrice` double DEFAULT NULL,
-  PRIMARY KEY (`variantId`)
+  `buyPrice` double DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 INSERT INTO `productvariants` (`variantId`, `productCode`, `variantName`, `buyPrice`) VALUES
